@@ -35,7 +35,7 @@ public class UserInfoServlet extends HttpServlet {
             response.getWriter().println(userJson);
         } else {
             // 未登录，重定向到登录页面
-            response.sendRedirect("/login.html");
+            response.getWriter().println("unLogin");
         }
     }
 }
