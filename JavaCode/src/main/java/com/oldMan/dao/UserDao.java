@@ -52,11 +52,11 @@ public class UserDao {
             DBUtil.closeJDBC(connection, pstmt, res);
         }
     }
-    public boolean loginUser(String phoneNumber, String password) {
+    public User loginUser(String phoneNumber, String password) {
         Connection connection = null;
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
-        boolean isValidUser = false;
+        User user = null;
 
         try {
             connection = DBUtil.getConnection();
@@ -66,14 +66,24 @@ public class UserDao {
             pstmt.setString(2, password);
             resultSet = pstmt.executeQuery();
 
-            isValidUser = resultSet.next(); // 如果有匹配的用户，返回 true
+            if (resultSet.next()) {
+                // 如果有匹配的用户，创建 User 对象并设置属性
+                user = new User();
+                user.setUserId(resultSet.getInt("user_id"));
+                user.setUserName(resultSet.getString("user_name"));
+                user.setPhoneNumber(resultSet.getString("phone_number"));
+                user.setUserRole(resultSet.getString("user_role"));
+                // 其他属性设置...
+
+                // 注意：密码等敏感信息不建议存储在对象中
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBUtil.closeJDBC(connection, pstmt, resultSet);
         }
 
-        return isValidUser;
+        return user;
     }
 
 }
