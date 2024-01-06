@@ -35,6 +35,7 @@ public class UserLoginServlet extends HttpServlet {
             session.setAttribute("phoneNumber", user.getPhoneNumber());
             session.setAttribute("userName", user.getUserName());
             session.setAttribute("userRole", user.getUserRole());
+            session.setAttribute("userId", String.valueOf(user.getUserId()));
             resp.sendRedirect("/index.html");
         } else {
             // 登录失败，返回登录页面并显示错误信息

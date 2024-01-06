@@ -5,6 +5,9 @@ package com.oldMan.servlet;
  * @version 1.0
  * @date 2024/1/3 10:05
  */
+import com.alibaba.fastjson.JSON;
+import com.oldMan.bean.User;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +26,12 @@ public class UserInfoServlet extends HttpServlet {
             String userName = (String) session.getAttribute("userName");
             String phoneNumber = (String) session.getAttribute("phoneNumber");
             String userRole = (String) session.getAttribute("userRole");
+            String userId = (String) session.getAttribute("userId");
 
             String userJson = "{";
             userJson += "\"userName\":\"" + userName + "\",";
             userJson += "\"phoneNumber\":\"" + phoneNumber + "\",";
+            userJson += "\"userId\":\"" + userId + "\",";
             userJson += "\"userRole\":\"" + userRole + "\"";
             userJson += "}";
 
