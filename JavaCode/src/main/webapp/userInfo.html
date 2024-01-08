@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>编辑资料</title>
+    <title>我的资料</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/favicon.ico"/>
     <!-- Bootstrap CSS -->
@@ -76,9 +76,8 @@
                                     class="ri-user-3-fill"></i><span>我的</span><i
                                     class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                             <ul class="iq-submenu">
-                                <li><a href="userInfo.html"><i class="ri-profile-fill"></i>我的资料</a>
-                                </li>
-                                <li class="active"><a href="editUserInfo.html"><i class="ri-file-edit-fill"></i>编辑资料</a></li>
+                                <li class="active"><a href="userInfo.html"><i class="ri-profile-fill"></i>我的资料</a></li>
+                                <li><a href="editUserInfo.html"><i class="ri-file-edit-fill"></i>编辑资料</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -236,56 +235,67 @@
             <!-- TOP Nav Bar END -->
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="iq-edit-list-data">
-                            <div class="tab-content">
-                                <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
-                                    <div class="iq-card">
-                                        <div class="iq-card-header d-flex justify-content-between">
-                                            <div class="iq-header-title">
-                                                <h4 class="card-title">个人信息</h4>
-                                            </div>
-                                        </div>
-                                        <div class="iq-card-body">
-                                            <div class="form-group row align-items-center">
-                                                <div class="col-md-12">
-                                                    <div class="profile-img-edit">
-                                                        <img class="profile-pic" src="images/user/11.png" alt="profile-pic">
-                                                    </div>
+                    <div class="col-lg-4">
+                        <div class="iq-card iq-user-profile-block">
+                            <div class="iq-card-body">
+                                <div class="user-details-block">
+                                    <div class="user-profile text-center">
+                                        <img src="images/user/11.png" alt="profile-img" class="avatar-130 img-fluid">
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <h4><b>{{userInfo.userName}}</b></h4>
+                                        <p v-if="userInfo.userRole === '1'">护工</p>
+                                        <p v-if="userInfo.userRole === '2'">管理员</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iq-card">
+                            <div class="iq-card-body">
+                                <p class="mb-0" style="margin-left: 15px">我的简介</p>
+                                <hr>
+                                <div class="patient-steps2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h5 style="margin-left: 15px">{{userBaseInfo.intro}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="iq-card">
+                            <div class="iq-card-body pb-0">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="iq-card mb-0">
+                                            <div class="iq-card-header d-flex justify-content-between p-0 bg-white">
+                                                <div class="iq-header-title">
+                                                    <h4 class="card-title text-primary">我的资料</h4>
                                                 </div>
                                             </div>
-                                            <form action="/api/updateUserBaseInfo" method="post">
-                                                <div class=" row align-items-center">
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="fname">姓名:</label>
-                                                        <input type="text" class="form-control" id="fname" name="name" :value="userFormInfo.name">
-                                                    </div>
-                                                    <div class="form-group col-sm-6">
-                                                        <label>性别:</label>
-                                                        <select v-model="userFormInfo.gender" class="form-control" name="gender" id="exampleFormControlSelect1">
-                                                            <option>男</option>
-                                                            <option>女</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="uname">电话号码:</label>
-                                                        <input type="text" class="form-control" name="phoneNumber" id="uname" :value="userFormInfo.phoneNumber">
-                                                    </div>
+                                            <div class="iq-card-body p-0">
+                                                <table class="table mb-0 table-borderless table-box-shadow">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">电话号码</th>
+                                                        <th scope="col">{{userInfo.phoneNumber}}</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <thead>
+                                                    <tr>
+                                                        <td>性别</td>
+                                                        <td>{{userBaseInfo.gender}}</td>
+                                                    </tr>
+                                                    </thead>
+                                                    <thead>
+                                                    <tr>
+                                                        <td>毕业院校</td>
+                                                        <td>{{userBaseInfo.education}}</td>
+                                                    </tr>
 
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="cname">毕业院校:</label>
-                                                        <input type="text" class="form-control" name="education" id="cname" :value="userFormInfo.education">
-                                                    </div>
-                                                    <div class="form-group col-sm-12">
-                                                        <label>我的简介:</label>
-                                                        <textarea class="form-control" name="intro" rows="5" style="line-height: 22px;" :value="userFormInfo.intro">
-
-                                                        </textarea>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary mr-2">提交</button>
-                                                <button type="reset" class="btn iq-bg-danger">cancel</button>
-                                            </form>
+                                                    </thead>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -306,16 +316,9 @@
 
         const app = createApp({
             setup() {
-                const baseUrl = 'http://localhost/api'
+                const baseUrl = 'http://localhost:8080/api'
                 let userInfo = ref({})
                 let userBaseInfo = ref({})
-                let userFormInfo = ref({
-                    name: "",
-                    gender: "",
-                    phoneNumber: "",
-                    education: "",
-                    intro: ""
-                });
                 const getUserInfo = () => {
                     axios.get(baseUrl + '/UserInfo')
                         .then(res => {
@@ -326,42 +329,19 @@
                         })
                         .then(res => {
                             userBaseInfo.value = res.data;
-                            userFormInfo.value.name = userInfo.value.userName;
-                            userFormInfo.value.gender = userBaseInfo.value.gender;
-                            userFormInfo.value.phoneNumber = userInfo.value.phoneNumber;
-                            userFormInfo.value.education = userBaseInfo.value.education;
-                            userFormInfo.value.intro = userBaseInfo.value.intro;
                             console.log(userBaseInfo.value);
-                            console.log(userFormInfo.value);
                         })
                         .catch(error => {
                             console.error('Error:', error);
                         });
                 };
-
-                const submitUserFormInfo = () => {
-                    axios.post('/api/updateUserBaseInfo', userFormInfo)
-                    .then(res => {
-                        // 处理成功响应
-                        if (res.data === 'success'){
-                            window.location.href = '/userInfo.html';
-                        }
-                    })
-                    .catch(error => {
-                        // 处理错误
-                        console.error('There was an error!', error);
-                    });
-                }
-
                 onMounted(() => {
                     getUserInfo();
                 })
 
                 return {
                     userInfo,
-                    userBaseInfo,
-                    userFormInfo,
-                    submitUserFormInfo
+                    userBaseInfo
                 }
             }
         })
