@@ -73,9 +73,6 @@ public class UserDao {
                 user.setUserName(resultSet.getString("user_name"));
                 user.setPhoneNumber(resultSet.getString("phone_number"));
                 user.setUserRole(resultSet.getString("user_role"));
-                // 其他属性设置...
-
-                // 注意：密码等敏感信息不建议存储在对象中
             }
         } catch (SQLException e) {
             e.printStackTrace();

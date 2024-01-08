@@ -111,4 +111,34 @@ public class OldDao {
         }
         return oldList;
     }
+
+    public Old getOldInfoById(int id) {
+        Connection connection = DBUtil.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Old old = new Old();
+        String SELECT_QUERY = "SELECT * FROM old_info where elderly_id = ?";
+        try {
+            pstmt = connection.prepareStatement(SELECT_QUERY);
+            pstmt.setInt(1,id);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                old.setElderlyID(rs.getInt("elderly_id"));
+                old.setName(rs.getString("name"));
+                old.setGender(rs.getString("gender"));
+                old.setBirthdate(rs.getString("birthdate"));
+                old.setAddress(rs.getString("address"));
+                old.setHealthCondition(rs.getString("health_condition"));
+                old.setMedicationInfo(rs.getString("medication_info"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DBUtil.closeJDBC(connection, pstmt,rs);
+        }
+        return old;
+    }
+
+
 }

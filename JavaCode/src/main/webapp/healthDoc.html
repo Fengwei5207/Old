@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>新增健康档案</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="css/typography.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="wrapper" id="app">
+    <!-- Sidebar  -->
+    <div class="iq-sidebar">
+        <div class="iq-sidebar-logo d-flex justify-content-between">
+            <a href="../index.html">
+                <img src="../images/logo.png" class="img-fluid" alt="">
+                <span>智慧养老</span>
+            </a>
+            <div class="iq-menu-bt-sidebar">
+                <div class="iq-menu-bt align-self-center">
+                    <div class="wrapper-menu">
+                        <div class="main-circle"><i class="ri-more-fill"></i></div>
+                        <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar-scrollbar">
+            <nav class="iq-sidebar-menu">
+                <ul class="iq-menu">
+                    <li>
+                        <a href="index.html" class="iq-waves-effect"><i
+                                class="ri-hospital-fill"></i><span>首页</span></a>
+                    </li>
+                    <!--                    <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>通知公告</span></li>-->
+                    <li>
+                        <a href="publicNotice.html" class="iq-waves-effect"><i
+                                class="ri-home-8-fill"></i><span>养老公告 </span></a>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-group-fill"></i><span>健康档案</span><i
+                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                            <li class="active"><a href="userInfo.html"><i class="ri-profile-fill"></i>健康档案信息</a></li>
+                            <li><a href="userInfo.html"><i class="ri-profile-fill"></i>医疗预约</a></li>
+                            <li><a href="profile-edit.html"><i class="ri-file-edit-fill"></i>用药提醒</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-group-fill"></i><span>老人管理</span><i
+                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu" >
+                            <li><a href="oldList.html"><i class="ri-profile-fill"></i>查看老人资料</a></li>
+                            <li><a href="addOld.html"><i class="ri-profile-fill"></i>新增老人资料</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="publicNotice.html" class="iq-waves-effect"><i
+                                class="ri-message-fill"></i><span>审核员工信息</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i
+                                class="ri-user-3-fill"></i><span>我的</span><i
+                                class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                            <li><a href="userInfo.html"><i class="ri-profile-fill"></i>我的资料</a>
+                            </li>
+                            <li><a href="editUserInfo.html"><i class="ri-file-edit-fill"></i>编辑资料</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="p-3"></div>
+        </div>
+    </div>
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <!-- TOP Nav Bar -->
+        <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <div class="iq-sidebar-logo">
+                    <div class="top-logo">
+                        <a href="index.html" class="logo">
+                            <img src="../images/logo.png" class="img-fluid" alt="">
+                            <span>XRay</span>
+                        </a>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <div class="iq-menu-bt align-self-center">
+                        <div class="wrapper-menu">
+                            <div class="main-circle"><i class="ri-more-fill"></i></div>
+                            <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-list">
+                            <li class="nav-item iq-full-screen">
+                                <a href="#" class="iq-waves-effect" id="btnFullscreen"><i
+                                        class="ri-fullscreen-line"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="search-toggle iq-waves-effect">
+                                    <i class="ri-notification-4-line"></i>
+                                    <span class="bg-danger dots"></span>
+                                </a>
+                                <div class="iq-sub-dropdown">
+                                    <div class="iq-card shadow-none m-0">
+                                        <div class="iq-card-body p-0 ">
+                                            <div class="bg-primary p-3">
+                                                <h5 class="mb-0 text-white">All Notifications<small
+                                                        class="badge  badge-light float-right pt-1">4</small></h5>
+                                            </div>
+                                            <a href="#" class="iq-sub-card">
+                                                <div class="media align-items-center">
+                                                    <div class="">
+                                                        <img class="avatar-40 rounded" src="../images/user/01.jpg"
+                                                             alt="">
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">Emma Watson Bini</h6>
+                                                        <small class="float-right font-size-12">Just Now</small>
+                                                        <p class="mb-0">95 MB</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="iq-sub-card">
+                                                <div class="media align-items-center">
+                                                    <div class="">
+                                                        <img class="avatar-40 rounded" src="../images/user/02.jpg"
+                                                             alt="">
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">New customer is join</h6>
+                                                        <small class="float-right font-size-12">5 days ago</small>
+                                                        <p class="mb-0">Jond Bini</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="iq-sub-card">
+                                                <div class="media align-items-center">
+                                                    <div class="">
+                                                        <img class="avatar-40 rounded" src="../images/user/03.jpg"
+                                                             alt="">
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">Two customer is left</h6>
+                                                        <small class="float-right font-size-12">2 days ago</small>
+                                                        <p class="mb-0">Jond Bini</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="iq-sub-card">
+                                                <div class="media align-items-center">
+                                                    <div class="">
+                                                        <img class="avatar-40 rounded" src="../images/user/04.jpg"
+                                                             alt="">
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">New Mail from Fenny</h6>
+                                                        <small class="float-right font-size-12">3 days ago</small>
+                                                        <p class="mb-0">Jond Bini</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <ul class="navbar-list">
+                        <li>
+                            <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                                <img src="../images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
+                                <div class="caption">
+                                    <h6 class="mb-0 line-height" id="userName1">null</h6>
+                                    <span class="font-size-12" id="userRole1">Available</span>
+                                </div>
+                            </a>
+                            <div class="iq-sub-dropdown iq-user-dropdown">
+                                <div class="iq-card shadow-none m-0">
+                                    <div class="iq-card-body p-0 ">
+                                        <div class="bg-primary p-3">
+                                            <h5 class="mb-0 text-white line-height" id="userName2">Hello</h5>
+                                            <span class="text-white font-size-12" id="userRole2">Available</span>
+                                        </div>
+                                        <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                            <div class="media align-items-center">
+                                                <div class="rounded iq-card-icon iq-bg-primary">
+                                                    <i class="ri-file-user-line"></i>
+                                                </div>
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">我的资料</h6>
+                                                    <p class="mb-0 font-size-12">查看我的资料</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                            <div class="media align-items-center">
+                                                <div class="rounded iq-card-icon iq-bg-primary">
+                                                    <i class="ri-profile-line"></i>
+                                                </div>
+                                                <div class="media-body ml-3">
+                                                    <h6 class="mb-0 ">编辑资料</h6>
+                                                    <p class="mb-0 font-size-12">编辑我的资料</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="d-inline-block w-100 text-center p-3" id="logoutButton">
+                                            <button class="bg-primary iq-sign-btn" role="button">退出登录<i
+                                                    class="ri-login-box-line ml-2"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- TOP Nav Bar END -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">健康档案信息表</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="text-center">
+                                        心率<br>
+                                        <small>次/分</small>
+                                    </th>
+                                    <th class="text-center">
+                                        血压<br>
+                                        <small>收缩压/舒张压</small>
+                                    </th>
+                                    <th class="text-center">
+                                        活动级别<br>
+                                        <small>1-100</small>
+                                    </th>
+                                    <th class="text-center">
+                                        睡眠质量<br>
+                                        <small>1-100</small>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(item, index) in HealthDocInfo">
+                                    <th class="text-nowrap text-left" scope="row">{{item.name}}</th>
+                                    <td class="text-center">{{item.heartRate}}</td>
+                                    <td class="text-center">{{item.bloodPressure}}</td>
+                                    <td class="text-center">{{item.activityLevel}}</td>
+                                    <td class="text-center">{{item.sleepQuality}}</td>
+                                    <td class="text-center" @click="deleteHealthDocById(item.healthID)">删除</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--  验证登录  -->
+<script type="module" src="../js/public-http-req.js"></script>
+<script type="module" src="../js/axios.min.js"></script>
+<!--  Vue3  -->
+<script type="module" src="../js/vue.esm-browser.js"></script>
+<!--  Vue3  -->
+<script type="module">
+    import {createApp, ref, reactive, onMounted} from '/js/vue.esm-browser.js'
+
+    const app = createApp({
+        setup() {
+            const baseUrl = 'http://localhost:8080/api'
+            const HealthDocInfo = ref([]);
+
+            const getAllHealthDocInfo = () => {
+                axios.get(baseUrl + "/getAllHealthDoc")
+                    .then(res => {
+                        HealthDocInfo.value = res.data
+                        console.log(HealthDocInfo.value)
+                    })
+                    .catch(error => {
+                        alert("网络错误!")
+                    })
+            }
+            const deleteHealthDocById =(id)=>{
+                axios.get(baseUrl+"/deleteHealthDoc?id="+id)
+                    .then(res => {
+                        if (res.data === 'success'){
+                            location.reload();
+                        }
+
+                    })
+            }
+
+            onMounted(() => {
+                getAllHealthDocInfo()
+
+            })
+
+            return {
+                HealthDocInfo,
+                deleteHealthDocById
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+<!-- Wrapper END -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Appear JavaScript -->
+<script src="js/jquery.appear.js"></script>
+<!-- Countdown JavaScript -->
+<script src="js/countdown.min.js"></script>
+<!-- Counterup JavaScript -->
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Wow JavaScript -->
+<script src="js/wow.min.js"></script>
+<!-- Apexcharts JavaScript -->
+<script src="js/apexcharts.js"></script>
+<!-- Slick JavaScript -->
+<script src="js/slick.min.js"></script>
+<!-- Select2 JavaScript -->
+<script src="js/select2.min.js"></script>
+<!-- Owl Carousel JavaScript -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Magnific Popup JavaScript -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Smooth Scrollbar JavaScript -->
+<script src="js/smooth-scrollbar.js"></script>
+<!-- lottie JavaScript -->
+<script src="js/lottie.js"></script>
+<!-- Chart Custom JavaScript -->
+<script src="js/chart-custom.js"></script>
+<!-- Custom JavaScript -->
+<script src="js/custom.js"></script>
+</body>
+</html>

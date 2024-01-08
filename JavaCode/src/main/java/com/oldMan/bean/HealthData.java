@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class HealthData {
     private int healthID;
     private int elderlyID;
+    private String name;
     private int heartRate;
     private String bloodPressure;
     private int activityLevel;
