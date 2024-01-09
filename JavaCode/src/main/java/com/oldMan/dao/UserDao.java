@@ -1,5 +1,6 @@
 package com.oldMan.dao;
 import com.oldMan.bean.User;
+import com.oldMan.bean.UserBaseInfo;
 import com.oldMan.util.DBUtil;
 
 import java.sql.*;
@@ -27,6 +28,11 @@ public class UserDao {
             pstmt.setString(4, user.getUserRole());
 
             int rowsAffected = pstmt.executeUpdate();
+
+            UserBaseInfoDao userBaseInfoDao = new UserBaseInfoDao();
+            UserBaseInfo userBaseInfo = new UserBaseInfo(user.getUserId(), "男","null","null");
+            userBaseInfoDao.addUserBaseInfo(userBaseInfo);
+
             return rowsAffected > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
