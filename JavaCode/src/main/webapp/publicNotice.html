@@ -67,7 +67,7 @@
 
                         </ul>
                     </li>
-                    <li>
+                    <li id="preUser">
                         <a href="preUser.html" class="iq-waves-effect"><i
                                 class="ri-message-fill"></i><span>审核员工信息</span></a>
                     </li>
@@ -242,8 +242,8 @@
                             <div class="">
                                 <div class="iq-email-list">
                                     <button class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3"
-                                            data-target="#compose-email-popup" data-toggle="modal"><i
-                                            class="ri-send-plane-line mr-2"></i>New Message
+                                            data-target="#compose-email-popup" data-toggle="modal" id="newNoticeBtn">
+                                        <i class="ri-send-plane-line mr-2"></i>新增公告
                                     </button>
                                     <div class="iq-email-ui nav flex-column nav-pills">
                                         <li class="nav-link active" role="tab" data-toggle="pill" href="#mail-inbox"><a
@@ -388,6 +388,10 @@
     </div>
     <!--  验证登录  -->
     <script type="module" src="../js/public-http-req.js"></script>
+    <script>
+
+
+    </script>
     <script type="module" src="../js/axios.min.js"></script>
     <!--  通过Dom遍历noticeList并展示  -->
     <script type="module">
@@ -499,8 +503,6 @@
             })
 
     </script>
-
-    <!--  封装axios获取用户名等信息  -->
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

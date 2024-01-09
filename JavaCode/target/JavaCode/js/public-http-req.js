@@ -17,6 +17,19 @@ axios.get('/api/UserInfo')
             let userRole = '';
             if (userData.userRole === '1') {
                 userRole = '护工'
+            //  取消显示审核员工信息
+                const preUserElement = document.getElementById("preUser")
+                preUserElement.style.display = 'none'
+                // 取消发送公告按钮
+                try {
+                    const newNoticeBtnElement = document.getElementById('newNoticeBtn')
+                    // console.log(newNoticeBtnElement)
+                    newNoticeBtnElement.style.display = 'none'
+                }catch (e) {
+                    console.log(e)
+                }
+
+
             } else if (userData.userRole === '2') {
                 userRole = '管理员'
             }
@@ -30,7 +43,8 @@ axios.get('/api/UserInfo')
     })
     .catch(function (error) {
         // 请求失败，处理错误
-        alert("网络错误,请检查网络");
+        // alert("网络错误,请检查网络");
+        location.reload();
     });
 
 
