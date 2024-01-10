@@ -28,6 +28,11 @@ public class AddHealthDocServlet extends HttpServlet {
         String bloodPressure = req.getParameter("bloodPressure");
         int activeLevel = Integer.parseInt(req.getParameter("activeLevel"));
         int sleepQuality = Integer.parseInt(req.getParameter("sleepQuality"));
+//        int elderlyId = req.getParameter("elderlyId");
+//        int heartRate = req.getParameter("heartRate");
+//        String bloodPressure = req.getParameter("bloodPressure");
+//        int activeLevel = req.getParameter("activeLevel");
+//        int sleepQuality = req.getParameter("sleepQuality");
 
         HealthData healthData = new HealthData(-1, elderlyId, null, heartRate,bloodPressure,activeLevel, sleepQuality);
         HealthDocDao healthDocDao = new HealthDocDao();
