@@ -17,7 +17,7 @@ import java.io.IOException;
  * @date 2024/1/4 15:25
  */
 @WebServlet("/api/getUserBaseInfo")
-public class getUserBaseInfoServlet extends HttpServlet {
+public class GetUserBaseInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

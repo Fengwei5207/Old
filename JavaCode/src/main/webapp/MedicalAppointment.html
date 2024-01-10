@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>健康档案</title>
+    <title>医疗预约档案</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <!-- Bootstrap CSS -->
@@ -50,8 +50,8 @@
                         <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-group-fill"></i><span>健康档案</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul class="iq-submenu">
-                            <li class="active"><a href="healthDoc.html"><i class="ri-profile-fill"></i>健康档案信息</a></li>
-                            <li><a href="userInfo.html"><i class="ri-profile-fill"></i>医疗预约</a></li>
+                            <li><a href="healthDoc.html"><i class="ri-profile-fill"></i>健康档案信息</a></li>
+                            <li class="active"><a href="MedicalAppointment.html"><i class="ri-profile-fill"></i>医疗预约</a></li>
                             <li><a href="profile-edit.html"><i class="ri-file-edit-fill"></i>用药提醒</a></li>
                         </ul>
                     </li>
@@ -244,33 +244,28 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th></th>
+<!--                                    <th></th>-->
                                     <th class="text-center">
-                                        心率<br>
-                                        <small>次/分</small>
+                                        预约简述
                                     </th>
                                     <th class="text-center">
-                                        血压<br>
-                                        <small>收缩压/舒张压</small>
+                                        开始时间
                                     </th>
                                     <th class="text-center">
-                                        活动级别<br>
-                                        <small>1-100</small>
+                                        预约内容
                                     </th>
                                     <th class="text-center">
-                                        睡眠质量<br>
-                                        <small>1-100</small>
+                                        操作
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(item, index) in HealthDocInfo">
-                                    <th class="text-nowrap text-left" scope="row">{{item.name}}</th>
-                                    <td class="text-center">{{item.heartRate}}</td>
-                                    <td class="text-center">{{item.bloodPressure}}</td>
-                                    <td class="text-center">{{item.activityLevel}}</td>
-                                    <td class="text-center">{{item.sleepQuality}}</td>
-                                    <td class="text-center" @click="deleteHealthDocById(item.healthID)">删除</td>
+                                <tr v-for="(item, index) in MedicalAppointmentInfo">
+<!--                                    <th class="text-nowrap text-left" scope="row">{{item.name}}</th>-->
+                                    <td class="text-center">{{item.title}}</td>
+                                    <td class="text-center">{{item.startDateTime}}</td>
+                                    <td class="text-center">{{item.context}}</td>
+                                    <td class="text-center" @click="deleteMedicalAppointmentInfoById(item.medicalAppointmentId)">完成</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -295,20 +290,20 @@
     const app = createApp({
         setup() {
             const baseUrl = 'http://localhost:8080/api'
-            const HealthDocInfo = ref([]);
+            const MedicalAppointmentInfo = ref([]);
 
-            const getAllHealthDocInfo = () => {
-                axios.get(baseUrl + "/getAllHealthDoc")
+            const getAllMedicalAppointmentInfo = () => {
+                axios.get(baseUrl + "/getAllMedicalAppointments")
                     .then(res => {
-                        HealthDocInfo.value = res.data
-                        console.log(HealthDocInfo.value)
+                        MedicalAppointmentInfo.value = res.data
+                        console.log(MedicalAppointmentInfo.value)
                     })
                     .catch(error => {
                         alert("网络错误!")
                     })
             }
-            const deleteHealthDocById =(id)=>{
-                axios.get(baseUrl+"/deleteHealthDoc?id="+id)
+            const deleteMedicalAppointmentInfoById =(id)=>{
+                axios.get(baseUrl+"/deleteMedicalAppointment?id="+id)
                     .then(res => {
                         if (res.data === 'success'){
                             location.reload();
@@ -318,13 +313,13 @@
             }
 
             onMounted(() => {
-                getAllHealthDocInfo()
+                getAllMedicalAppointmentInfo()
 
             })
 
             return {
-                HealthDocInfo,
-                deleteHealthDocById
+                MedicalAppointmentInfo,
+                deleteMedicalAppointmentInfoById
             }
         }
     })

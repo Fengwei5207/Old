@@ -4,9 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>健康档案</title>
+    <title>新增医疗预约</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Typography CSS -->
@@ -50,8 +50,8 @@
                         <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-group-fill"></i><span>健康档案</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul class="iq-submenu">
-                            <li class="active"><a href="healthDoc.html"><i class="ri-profile-fill"></i>健康档案信息</a></li>
-                            <li><a href="userInfo.html"><i class="ri-profile-fill"></i>医疗预约</a></li>
+                            <li><a href="healthDoc.html"><i class="ri-profile-fill"></i>健康档案信息</a></li>
+                            <li class="active"><a href="userInfo.html"><i class="ri-profile-fill"></i>医疗预约</a></li>
                             <li><a href="profile-edit.html"><i class="ri-file-edit-fill"></i>用药提醒</a></li>
                         </ul>
                     </li>
@@ -233,50 +233,37 @@
         <!-- TOP Nav Bar END -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-lg-12">
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
-                                <h4 class="card-title">健康档案信息表</h4>
+                                <h4 class="card-title">为{{oldName}}新增医疗预约</h4>
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th class="text-center">
-                                        心率<br>
-                                        <small>次/分</small>
-                                    </th>
-                                    <th class="text-center">
-                                        血压<br>
-                                        <small>收缩压/舒张压</small>
-                                    </th>
-                                    <th class="text-center">
-                                        活动级别<br>
-                                        <small>1-100</small>
-                                    </th>
-                                    <th class="text-center">
-                                        睡眠质量<br>
-                                        <small>1-100</small>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="(item, index) in HealthDocInfo">
-                                    <th class="text-nowrap text-left" scope="row">{{item.name}}</th>
-                                    <td class="text-center">{{item.heartRate}}</td>
-                                    <td class="text-center">{{item.bloodPressure}}</td>
-                                    <td class="text-center">{{item.activityLevel}}</td>
-                                    <td class="text-center">{{item.sleepQuality}}</td>
-                                    <td class="text-center" @click="deleteHealthDocById(item.healthID)">删除</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div class="new-user-info">
+                                <form action="/api/addMedicalAppointment" method="post">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>预约简述</label>
+                                            <input type="text" name="title"  class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>开始时间</label>
+                                            <input type="datetime-local" name="startDateTime"  class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>预约内容</label>
+                                            <textarea class="form-control" name="context" rows="5"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <input type="hidden" name="oldId" :value="oldId">
+                                    <button type="submit" class="btn btn-primary">提 交</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -295,36 +282,29 @@
     const app = createApp({
         setup() {
             const baseUrl = 'http://localhost:8080/api'
-            const HealthDocInfo = ref([]);
+            const oldName = ref();
+            const oldId = ref();
 
-            const getAllHealthDocInfo = () => {
-                axios.get(baseUrl + "/getAllHealthDoc")
+            const getOldInfo = () => {
+                const urlParams = new URLSearchParams(window.location.hash.slice(1));
+                let id = Number(urlParams.get("elderlyID"))
+                axios.get(baseUrl+"/getOldInfoById?id="+id)
                     .then(res => {
-                        HealthDocInfo.value = res.data
-                        console.log(HealthDocInfo.value)
-                    })
-                    .catch(error => {
-                        alert("网络错误!")
+                        oldName.value = res.data.name
+                        oldId.value = res.data.elderlyID
+                        // console.log(oldId, oldName)
                     })
             }
-            const deleteHealthDocById =(id)=>{
-                axios.get(baseUrl+"/deleteHealthDoc?id="+id)
-                    .then(res => {
-                        if (res.data === 'success'){
-                            location.reload();
-                        }
 
-                    })
-            }
 
             onMounted(() => {
-                getAllHealthDocInfo()
+                getOldInfo()
 
             })
 
             return {
-                HealthDocInfo,
-                deleteHealthDocById
+                oldName,
+                oldId
             }
         }
     })
